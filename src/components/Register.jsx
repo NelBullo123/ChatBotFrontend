@@ -34,7 +34,7 @@ function Register() {
         setErrorMessage('');
 
         try {
-            const response = await fetch('https://chatbotbackend-co2p.onrender.com/register', {
+            const response = await fetch('https://chatbotbackend-m8tb.onrender.com/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
