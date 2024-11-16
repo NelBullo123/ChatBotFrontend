@@ -80,7 +80,7 @@ const Chatbot = () => {
     setMessage('');
 
     try {
-      const response = await axios.post(process.env.REACT_APP_BACKEND_URL, { message });
+      const response = await axios.post('https://chatbotbackend-m8tb.onrender.com/chat', { message });
       const aiMessage = response.data.response;
 
       const updatedChatHistory = [...newChatHistory, { ai: aiMessage }];
