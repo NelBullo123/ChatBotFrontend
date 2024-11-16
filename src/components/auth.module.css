@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://img.freepik.com/premium-vector/digital-chatbot-virtual-assistant-artificial-intelligence-chat-concept-with-chat-bubble_618588-1139.jpg?semt=ais_hybrid') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    padding: 20px; /* Added padding to make the container responsive */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall layout */
+}
+
+.form {
+    background-color: rgba(44, 62, 80, 0.8); /* Slight transparency for better contrast */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+    color: #ffffff;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.logo {
+    display: block;        /* Ensures the logo is a block element */
+    margin: 0 auto 1.5rem; /* Centers the logo and adds space below it */
+    width: 150px;          /* Makes the logo larger (you can adjust this value) */
+    height: auto;          /* Maintains the aspect ratio */
+}
+
+.input {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #34495e;
+    color: #ffffff;
+    transition: background 0.3s ease;
+    width: 100%;
+    box-sizing: border-box; /* Ensures inputs use the full available width */
+}
+
+.input:focus {
+    outline: none;
+    background-color: #3b5998;
+}
+
+.button {
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #2980b9;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Make the button take full width */
+    box-sizing: border-box; /* Ensure it fills the form's width */
+}
+
+.button:disabled {
+    background-color: #6c7a89;
+    cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+    background-color: #3498db;
+    transform: translateY(-2px);
+}
+
+.button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.errorMessage {
+    color: #e74c3c;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.toggleText {
+    color: #ADD8E6; /* Light blue color */
+    margin-top: 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.toggleText:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .form {
+        max-width: 90%; /* Make the form more fluid on smaller screens */
+    }
+
+    .logo {
+        width: 120px; /* Resize logo for mobile */
+    }
+
+    .input {
+        font-size: 0.9rem; /* Smaller input text for better fit */
+    }
+
+    .button {
+        font-size: 1rem; /* Adjust button font size for mobile */
+    }
+}
