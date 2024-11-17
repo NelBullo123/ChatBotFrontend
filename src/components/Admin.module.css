@@ -1,63 +1,104 @@
-/* Admin.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Lora:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
 
-.container {
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    min-height: 100vh;
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Background Styling */
+body {
+    background-image: url('https://e0.pxfuel.com/wallpapers/586/990/desktop-wallpaper-administrator-background-it-system-admin.jpg');
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 40px;
+    background-color: rgba(36, 36, 36, 0.9); /* Semi-transparent dark background for contrast */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    max-width: 1300px;
+}
+
+/* Title Styling */
 .title {
     text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.subTitle {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #555;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white; /* White text for better contrast */
     margin-bottom: 20px;
+    font-family: 'Lora', serif;
 }
 
+/* Table Container */
 .tableContainer {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #2C2451; /* Dark background for the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow-x: auto;
 }
 
+/* Table */
 .table {
     width: 100%;
     border-collapse: collapse;
     margin: 0;
-    padding: 0;
+    background-color: #2C2451; /* Matches the container's background */
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
-.table th, .table td {
-    padding: 15px;
+.table th,
+.table td {
+    padding: 12px 20px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border: none;
+    font-size: 1rem;
 }
 
 .table th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
+    background-color: #3D2E70; /* Header color */
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #45386A;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #3D2E70; /* Alternate row color */
+}
+
+.table tr:nth-child(even) {
+    background-color: #2C2451; /* Matches container background */
 }
 
 .table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #4B3B91; /* Hover effect */
+    cursor: pointer;
 }
 
-.loading, .error {
+.table td {
+    border-bottom: 1px solid #45386A; /* Subtle borders */
+}
+
+/* Loading and Error */
+.loading,
+.error {
     text-align: center;
-    font-size: 1.2rem;
-    color: #ff6347;
+    font-size: 1.5rem;
     margin-top: 50px;
 }
 
@@ -67,4 +108,16 @@
 
 .error {
     color: #ff6347;
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #cccccc; /* Light text for better contrast */
+    margin-top: 30px;
+    padding: 15px;
+    background-color: rgba(44, 36, 81, 0.8); /* Semi-transparent footer background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }

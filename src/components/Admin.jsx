@@ -10,21 +10,27 @@ const Admin = () => {
         // Fetch users from the Flask API
         const fetchUsers = async () => {
             try {
-                const response = await fetch("https://chatbotbackend-m8tb.onrender.com/admin/users", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
+                const response = await fetch(
+                    "https://chatbotbackend-m8tb.onrender.com/admin/users",
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
 
                 if (response.ok) {
                     const data = await response.json();
                     setUsers(data.users);
                 } else {
-                    setError("Failed to fetch users.");
+                    const errorData = await response.json();
+                    setError(errorData.message || "Failed to fetch users.");
+                    console.error("Backend error:", errorData); // Log the full error response
                 }
             } catch (err) {
                 setError("An error occurred while fetching users.");
+                console.error("Fetch error:", err); // Log fetch error
             } finally {
                 setLoading(false);
             }
@@ -32,32 +38,6 @@ const Admin = () => {
 
         fetchUsers();
     }, []);
-
-    const formatDate = (dateString) => {
-        if (!dateString) {
-            console.error("Invalid date string:", dateString); // Log if date is undefined or null
-            return "Invalid Date"; // Return a fallback value
-        }
-
-        const date = new Date(dateString);
-
-        // If the date is invalid, return a fallback message
-        if (isNaN(date.getTime())) {
-            console.error("Invalid date string:", dateString);  // Log invalid date
-            return "Invalid Date";
-        }
-
-        const options = {
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric', 
-            hour: 'numeric', 
-            minute: 'numeric', 
-            second: 'numeric', 
-            hour12: true
-        };
-        return date.toLocaleString(undefined, options); // Format as a readable date
-    };
 
     if (loading) {
         return <div className={styles.loading}>Loading...</div>;
@@ -69,15 +49,13 @@ const Admin = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Admin Dashboard</h1>
-            <h2 className={styles.subTitle}>Registered Users</h2>
+            <h1 className={styles.title}>List of Registered Users</h1>
             <div className={styles.tableContainer}>
                 <table className={styles.table}>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Email</th>
-                            <th>Registration Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,12 +63,16 @@ const Admin = () => {
                             <tr key={user.id}>
                                 <td>{user.id}</td>
                                 <td>{user.email}</td>
-                                <td>{formatDate(user.created_at)}</td> {/* Display the formatted registration date */}
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+
+            {/* Footer */}
+            <footer className={styles.footer}>
+                Only admin can access this site
+            </footer>
         </div>
     );
 };
