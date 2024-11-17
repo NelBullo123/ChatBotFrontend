@@ -21,7 +21,7 @@ const Chatbot = () => {
   useEffect(() => {
     const savedChats = JSON.parse(localStorage.getItem('allChats')) || [[]];
     const savedLabels =
-      JSON.parse(localStorage.getItem('chatLabels')) || ["Today's Chat"];
+      JSON.parse(localStorage.getItem('chatLabels')) || ["First Chat"];
     const savedActiveChatIndex =
       JSON.parse(localStorage.getItem('activeChatIndex')) || 0;
 
