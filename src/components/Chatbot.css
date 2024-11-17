@@ -8,18 +8,20 @@
   margin: 0 auto;
   background-color: rgb(10, 64, 83);
   border-radius: 15px;
-  border: 3px solid black;
+  border: 3px solid black; /* Thick black border */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 600px; /* Height of the chatbot container */
   overflow: hidden;
   position: relative;
   background: url('https://img.freepik.com/free-vector/white-technology-background-with-shapes_23-2148390677.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background-size: cover; /* Ensure the background image covers the entire container */
 }
+
+
 
 .chatbot-header {
   display: flex;
@@ -28,7 +30,6 @@
   margin-bottom: 20px;
   background-color: rgb(10, 64, 83);
   position: relative;
-  padding: 10px;
 }
 
 .chatbot-logo {
@@ -39,7 +40,7 @@
 /* Trash Icon styles */
 .clear-chats-icon {
   position: absolute;
-  top: 50px;
+  top: 50px; /* Adjusted to account for the logout icon */
   right: 10px;
   font-size: 24px;
   color: #fff;
@@ -58,6 +59,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  height: 100%;
 }
 
 .chat-history .user, .chat-history .ai {
@@ -178,13 +180,15 @@
 .cancel-button:hover {
   background-color: #d32f2f;
 }
-
+/* Logout Icon styles */
+/* Logout Icon styles */
 .logout-container {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
+  top: 10px; /* Keep at the top */
+  right: 10px; /* Move to the right */
+  z-index: 10; /* Ensure it is above other elements */
 }
+
 
 .logout-icon {
   font-size: 28px;
@@ -197,9 +201,23 @@
   color: #f44336;
 }
 
+/* Trash Icon styles */
+.clear-chats-icon {
+  position: absolute;
+  top: 52px; /* Adjusted to leave space for the logout icon */
+  right: 10px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.clear-chats-icon:hover {
+  color: #f44336;
+}
+
 .chatbot-container {
   display: flex;
-  flex-direction: column;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -254,32 +272,35 @@
 .chat-session:hover, .chat-session.active {
   background-color: #1a73e8;
 }
-
+/* Style for user messages */
 .user-message {
   background-color: #007bff;
   color: white;
-  padding: 2px 5px;
+  padding: 2px 5px; /* Adjusted padding for closer fit */
   border-radius: 15px;
   max-width: 80%;
   align-self: flex-end;
-  margin: 5px 5px 5px auto;
+  margin: 5px 5px 5px auto; /* Small margin to the right */
   display: inline-block;
 }
 
+/* Style for AI messages */
 .ai-message {
   background-color: #e0e0e0;
   color: black;
-  padding: 5px 5px;
+  padding: 5px 5px; /* Adjusted padding for closer fit */
   border-radius: 15px;
   max-width: 80%;
   align-self: flex-start;
-  margin: 5px auto 5px 5px;
+  margin: 5px auto 5px 5px; /* Small margin to the left */
   display: inline-block;
 }
 
+/* Ensure the container has padding */
 .chat-container {
-  padding: 10px;
+  padding: 10px; /* Adjust container padding as needed */
 }
+
 
 .chatbot-header {
   display: flex;
@@ -288,11 +309,11 @@
 }
 
 .logout-icon {
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  vertical-align: top;
-  height: 20px;
+  margin-right: 5px; /* Space to the right of the icon */
+  margin-top: 5px; /* Adjust space above the icon */
+  margin-bottom: 5px; /* Adjust space below the icon */
+  vertical-align: top; /* Align the icon vertically to the top */
+  height: 20px; /* Set the height of the icon */
 }
 
 .ai-icon {
@@ -301,7 +322,6 @@
   margin-right: 1px;
   vertical-align: middle;
 }
-
 .typing-indicator {
   display: flex;
   justify-content: flex-start;
@@ -336,61 +356,4 @@
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .chatbot-container {
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 10px;
-  }
 
-  .chatbot {
-    height: 80vh;
-    max-width: 100%;
-  }
-
-  .chatbot-header {
-    padding: 10px 15px;
-  }
-
-  .chat-history {
-    padding: 10px 15px;
-  }
-
-  .chat-input {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .chat-input input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .chat-input button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .chatbot {
-    height: 70vh;
-  }
-
-  .chat-input input {
-    font-size: 14px;
-  }
-
-  .chat-history .user, .chat-history .ai {
-    font-size: 14px;
-  }
-
-  .chat-history {
-    padding: 5px;
-  }
-
-  .clear-chats-icon {
-    font-size: 20px;
-  }
-}
