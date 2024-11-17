@@ -211,3 +211,9 @@ body {
         font-size: 0.9rem;
     }
 }
+.userCount {
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 20px;
+}

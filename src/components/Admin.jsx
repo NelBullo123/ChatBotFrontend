@@ -55,6 +55,12 @@ const Admin = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>List of Registered Users</h1>
+
+            {/* Display total users count */}
+            <div className={styles.userCount}>
+                <h3>Total Users: {users.length}</h3>
+            </div>
+
             <div className={styles.tableContainer}>
                 <table className={styles.table}>
                     <thead>
