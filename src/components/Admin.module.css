@@ -10,9 +10,9 @@
 /* Background Styling */
 body {
     background-image: url('https://e0.pxfuel.com/wallpapers/586/990/desktop-wallpaper-administrator-background-it-system-admin.jpg');
-    background-size: cover; /* Ensures the image covers the entire screen */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -23,7 +23,7 @@ body {
     justify-content: space-between;
     min-height: 100vh;
     padding: 40px;
-    background-color: rgba(36, 36, 36, 0.9); /* Semi-transparent dark background for contrast */
+    background-color: rgba(36, 36, 36, 0.9);
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin: 20px auto;
@@ -35,7 +35,7 @@ body {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
-    color: white; /* White text for better contrast */
+    color: white;
     margin-bottom: 20px;
     font-family: 'Lora', serif;
 }
@@ -45,10 +45,10 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #2C2451; /* Dark background for the container */
+    background-color: #2C2451;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    overflow-x: auto;
+    overflow-x: auto; /* Enable horizontal scrolling */
 }
 
 /* Table */
@@ -56,7 +56,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin: 0;
-    background-color: #2C2451; /* Matches the container's background */
+    background-color: #2C2451;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
@@ -70,7 +70,7 @@ body {
 }
 
 .table th {
-    background-color: #3D2E70; /* Header color */
+    background-color: #3D2E70;
     font-weight: 600;
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -78,20 +78,20 @@ body {
 }
 
 .table tr:nth-child(odd) {
-    background-color: #3D2E70; /* Alternate row color */
+    background-color: #3D2E70;
 }
 
 .table tr:nth-child(even) {
-    background-color: #2C2451; /* Matches container background */
+    background-color: #2C2451;
 }
 
 .table tr:hover {
-    background-color: #4B3B91; /* Hover effect */
+    background-color: #4B3B91;
     cursor: pointer;
 }
 
 .table td {
-    border-bottom: 1px solid #45386A; /* Subtle borders */
+    border-bottom: 1px solid #45386A;
 }
 
 /* Loading and Error */
@@ -114,37 +114,100 @@ body {
 .footer {
     text-align: center;
     font-size: 1.2rem;
-    color: #cccccc; /* Light text for better contrast */
+    color: #cccccc;
     margin-top: 30px;
     padding: 15px;
-    background-color: rgba(44, 36, 81, 0.8); /* Semi-transparent footer background */
+    background-color: rgba(44, 36, 81, 0.8);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-/* Sign Out Button */
+
 /* Sign Out Button */
 .signOutButton {
-    position: absolute; /* Absolute positioning */
-    top: 20px; /* Distance from the top */
-    left: 20px; /* Distance from the left */
+    position: absolute;
+    top: 20px;
+    left: 20px;
     padding: 12px 20px;
     font-size: 1rem;
     font-weight: 600;
     color: white;
-    background-color: #3d1111; /* Red button for sign out */
+    background-color: #3d1111;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    z-index: 1000; /* Ensure it stays on top of other elements */
+    z-index: 1000;
 }
 
 .signOutButton:hover {
-    background-color: #342222; /* Darker red on hover */
+    background-color: #342222;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 .signOutButton:active {
-    transform: scale(0.95); /* Click effect */
+    transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .tableContainer {
+        padding: 10px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .signOutButton {
+        top: 10px;
+        left: 10px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .footer {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        margin: 5px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+
+    .signOutButton {
+        top: 8px;
+        left: 8px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .footer {
+        font-size: 0.9rem;
+    }
 }
