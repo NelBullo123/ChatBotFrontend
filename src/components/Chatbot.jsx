@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Chatbot.css';
 import chatbotLogo from './assets/chatbotlogo.png';
 import aiIcon from './assets/chatbotlogo.png';
-import { FaTrash, FaSignOutAlt, FaPlus, FaTimes, FaChevronRight } from 'react-icons/fa';
+import { FaTrash, FaSignOutAlt, FaPlus } from 'react-icons/fa';
 
 const Chatbot = () => {
   const [message, setMessage] = useState('');
@@ -14,8 +14,6 @@ const Chatbot = () => {
   const [allChats, setAllChats] = useState([[]]);
   const [chatLabels, setChatLabels] = useState(["First Chat"]);
   const [activeChatIndex, setActiveChatIndex] = useState(0);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
-  const [deletingChatIndex, setDeletingChatIndex] = useState(null); // Track which chat is being deleted
   const chatHistoryRef = useRef(null);
 
   useEffect(() => {
@@ -150,81 +148,31 @@ const Chatbot = () => {
     setIsLoggingOut(false);
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const deleteChat = (index) => {
-    const updatedChats = allChats.filter((_, i) => i !== index);
-    const updatedLabels = chatLabels.filter((_, i) => i !== index);
-    setAllChats(updatedChats);
-    setChatLabels(updatedLabels);
-    setActiveChatIndex(0);
-    setChatHistory([]);
-  };
-
-  const handleRightClick = (e, index) => {
-    e.preventDefault();  // Prevent default context menu
-    setDeletingChatIndex(index); // Track the chat to delete
-    showConfirmation(); // Show the confirmation modal
-  };
-
-  const handleLongPress = (e, index) => {
-    e.preventDefault();
-    setDeletingChatIndex(index); // Track the chat to delete
-    showConfirmation(); // Show the confirmation modal
-  };
-
-  const confirmDeleteChat = () => {
-    deleteChat(deletingChatIndex); // Delete the selected chat
-    setDeletingChatIndex(null); // Reset the deleting chat index
-    setIsConfirming(false); // Hide the confirmation modal
-  };
-
-  const cancelDeleteChat = () => {
-    setDeletingChatIndex(null); // Reset the deleting chat index
-    setIsConfirming(false); // Hide the confirmation modal
-  };
-
   return (
     <div className="chatbot-container">
-      <div className={`chatbot-sidebar ${isSidebarOpen ? '' : 'collapsed'}`}>
-        <button
-          onClick={toggleSidebar}
-          className={`toggle-sidebar-button ${isSidebarOpen ? 'open' : 'closed'}`} // Dynamic class
-          title={isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar'} // Add title for better UX
-        >
-          {isSidebarOpen ? <FaTimes /> : <FaChevronRight />} {/* Change icon dynamically */}
+      <div className="chatbot-sidebar">
+        <button onClick={createNewChat} className="new-chat-button">
+          <FaPlus /> New Chat
         </button>
-
-        {isSidebarOpen && (
-          <>
-            <button onClick={createNewChat} className="new-chat-button">
-              <FaPlus /> New Chat
-            </button>
-            <div className="chat-sessions">
-              {allChats.map((chat, index) => (
-                <div
-                  key={index}
-                  className={`chat-session ${index === activeChatIndex ? 'active' : ''}`}
-                  onClick={() => {
-                    setActiveChatIndex(index);
-                    setChatHistory(chat);
-                  }}
-                  onContextMenu={(e) => handleRightClick(e, index)} // Right-click event
-                  onTouchStart={(e) => handleLongPress(e, index)} // Mobile long press event
-                >
-                  {chatLabels[index] || `Chat ${index + 1}`}
-                </div>
-              ))}
+        <div className="chat-sessions">
+          {allChats.map((chat, index) => (
+            <div
+              key={index}
+              className={`chat-session ${
+                index === activeChatIndex ? 'active' : ''
+              }`}
+              onClick={() => {
+                setActiveChatIndex(index);
+                setChatHistory(chat);
+              }}
+            >
+              {chatLabels[index] || `Chat ${index + 1}`}
             </div>
-          </>
-        )}
+          ))}
+        </div>
       </div>
 
-      <div
-        className={`chatbot ${isSidebarOpen ? '' : 'expanded'}`}
-      >
+      <div className="chatbot">
         <div className="chatbot-header">
           <img
             src={chatbotLogo}
@@ -248,20 +196,16 @@ const Chatbot = () => {
               onClick={cancelClearChatHistory}
             ></div>
             <div className="confirmation-modal">
-              {deletingChatIndex !== null ? (
-                <p>Are you sure you want to delete this chat?</p>
-              ) : (
-                <p>Are you sure you want to delete all chats?</p>
-              )}
+              <p>Are you sure you want to delete all chats?</p>
               <div className="modal-buttons">
                 <button
-                  onClick={deletingChatIndex !== null ? confirmDeleteChat : clearChatHistory}
+                  onClick={clearChatHistory}
                   className="confirm-button"
                 >
                   Yes
                 </button>
                 <button
-                  onClick={cancelDeleteChat}
+                  onClick={cancelClearChatHistory}
                   className="cancel-button"
                 >
                   No

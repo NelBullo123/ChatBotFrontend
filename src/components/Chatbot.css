@@ -322,7 +322,6 @@
   margin-right: 1px;
   vertical-align: middle;
 }
-
 .typing-indicator {
   display: flex;
   justify-content: flex-start;
@@ -346,65 +345,6 @@
 
 .typing-indicator span:nth-child(3) {
   animation-delay: 0.4s;
-}
-.chatbot-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
-
-.chatbot-sidebar {
-  width: 250px;
-  transition: width 0.3s ease;
-}
-
-.chatbot-sidebar.collapsed {
-  width: 50px;
-}
-
-.chatbot {
-  flex: 1;
-  transition: margin-left 0.3s ease;
-}
-
-.chatbot.expanded {
-  margin-left: 0;
-}
-.toggle-sidebar-button {
-  position: absolute;
-  top: 10px; /* Keep it above other elements */
-  left: 10px; /* Adjust based on your layout */
-  z-index: 100; /* Ensure it's above other content */
-  background-color: #1a73e8;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 50%; /* Circular button */
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease-in-out;
-}
-
-.toggle-sidebar-button.open {
-  background-color: #f44336; /* Red for 'Close' state */
-}
-
-.toggle-sidebar-button.closed {
-  background-color: #1a73e8; /* Blue for 'Open' state */
-}
-
-.toggle-sidebar-button:hover {
-  background-color: #0b5fc4;
-}
-
-/* Fix sidebar layout overlapping */
-.chatbot-sidebar {
-  position: relative; /* Prevent overlap with absolute elements */
-  z-index: 50;
-  overflow: hidden; /* Prevent elements from spilling out */
 }
 
 @keyframes typing {
