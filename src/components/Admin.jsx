@@ -39,6 +39,11 @@ const Admin = () => {
         fetchUsers();
     }, []);
 
+    const handleSignOut = () => {
+        // Redirect to the given URL on sign out
+        window.location.href = "https://chatbot32-e6oa.onrender.com/";
+    };
+
     if (loading) {
         return <div className={styles.loading}>Loading...</div>;
     }
@@ -73,6 +78,11 @@ const Admin = () => {
             <footer className={styles.footer}>
                 Only admin can access this site
             </footer>
+
+            {/* Sign Out Button */}
+            <button className={styles.signOutButton} onClick={handleSignOut}>
+                Sign Out
+            </button>
         </div>
     );
 };

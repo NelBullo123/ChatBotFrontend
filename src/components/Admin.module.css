@@ -121,3 +121,30 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+/* Sign Out Button */
+/* Sign Out Button */
+.signOutButton {
+    position: absolute; /* Absolute positioning */
+    top: 20px; /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #3d1111; /* Red button for sign out */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.signOutButton:hover {
+    background-color: #342222; /* Darker red on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.signOutButton:active {
+    transform: scale(0.95); /* Click effect */
+}
