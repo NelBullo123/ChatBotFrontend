@@ -24,8 +24,14 @@ function Login() {
     
             if (response.ok) {
                 localStorage.setItem('access_token', data.token); // Save token for future requests
-                alert('Login successful');
-                navigate('/chatbot'); // Redirect to the chatbot after successful login
+                
+                // Redirect to /admin if user is the super user
+                if (data.redirect) {
+                    navigate(data.redirect);  // This will navigate to '/admin' for the super user
+                } else {
+                    alert('Login successful');
+                    navigate('/chatbot'); // Redirect to the chatbot after successful login for regular users
+                }
             } else {
                 alert('Login failed: ' + data.message);
             }
