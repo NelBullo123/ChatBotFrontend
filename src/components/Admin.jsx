@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from "./Admin.module.css"; // Import the CSS module
 
 const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -32,38 +33,64 @@ const Admin = () => {
         fetchUsers();
     }, []);
 
+    const formatDate = (dateString) => {
+        if (!dateString) {
+            console.error("Invalid date string:", dateString); // Log if date is undefined or null
+            return "Invalid Date"; // Return a fallback value
+        }
+
+        const date = new Date(dateString);
+
+        // If the date is invalid, return a fallback message
+        if (isNaN(date.getTime())) {
+            console.error("Invalid date string:", dateString);  // Log invalid date
+            return "Invalid Date";
+        }
+
+        const options = {
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: 'numeric', 
+            second: 'numeric', 
+            hour12: true
+        };
+        return date.toLocaleString(undefined, options); // Format as a readable date
+    };
+
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className={styles.loading}>Loading...</div>;
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className={styles.error}>{error}</div>;
     }
 
     return (
-        <div>
-            <h1>Admin Dashboard</h1>
-            <h2>Registered Users</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>History</th>
-                        <th>Last Question</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.email}</td>
-                            <td>{user.history}</td>
-                            <td>{user.last_question}</td>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Admin Dashboard</h1>
+            <h2 className={styles.subTitle}>Registered Users</h2>
+            <div className={styles.tableContainer}>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Registration Date</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.email}</td>
+                                <td>{formatDate(user.created_at)}</td> {/* Display the formatted registration date */}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
