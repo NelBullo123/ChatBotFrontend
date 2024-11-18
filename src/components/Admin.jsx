@@ -11,7 +11,7 @@ const Admin = () => {
         const fetchUsers = async () => {
             try {
                 const response = await fetch(
-                    "http://127.0.0.1:5000/admin/users",
+                    "https://chatbotbackend-m8tb.onrender.com/admin/users",
                     {
                         method: "GET",
                         headers: {

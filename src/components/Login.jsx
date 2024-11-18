@@ -3,14 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
 import chatbotLogo from './assets/chatbotlogo.png';
 
+
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+
     const handleLogin = async (e) => {
         e.preventDefault();
-    
+   
         try {
             const response = await fetch('https://chatbotbackend-m8tb.onrender.com/login', {
                 method: 'POST',
@@ -19,12 +21,12 @@ function Login() {
                 },
                 body: JSON.stringify({ email, password }),
             });
-    
+   
             const data = await response.json();
-    
+   
             if (response.ok) {
                 localStorage.setItem('access_token', data.token); // Save token for future requests
-                
+               
                 // Redirect to /admin if user is the super user
                 if (data.redirect) {
                     navigate(data.redirect);  // This will navigate to '/admin' for the super user
@@ -40,31 +42,34 @@ function Login() {
             alert('An error occurred during login. Please try again.');
         }
     };
-    
+   
+
 
     return (
         <div className={styles.container}>
             <form onSubmit={handleLogin} className={styles.form}>
                 <img src={chatbotLogo} alt="Chatbot Logo" className={styles.logo} />
 
+
                 <h2>Login</h2>
-                <input 
-                    type="email" 
-                    placeholder="Email" 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
-                    required 
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                     className={styles.input}
                 />
-                <input 
-                    type="password" 
-                    placeholder="Password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    required 
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                     className={styles.input}
                 />
                 <button type="submit" className={styles.button}>Login</button>
+
 
                 <p className={styles.toggleText}>
                     Don't have an account? <Link to="/register">Register now</Link>
@@ -73,5 +78,6 @@ function Login() {
         </div>
     );
 }
+
 
 export default Login;
