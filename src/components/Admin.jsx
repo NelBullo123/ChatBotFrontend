@@ -81,7 +81,7 @@ const Admin = () => {
     return (
         <div className={styles.wrapper}>
             <header className={styles.header}>
-                <h1 className={styles.title}>Admin Panel</h1>
+                <h1 className={styles.title}>Admin</h1>
                 <button
                     className={`${styles.button} ${styles.signOut}`}
                     onClick={handleSignOut}
