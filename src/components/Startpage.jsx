@@ -6,7 +6,7 @@ const Startpage = () => {
   const navigate = useNavigate();
 
   const handleStart = () => {
-    navigate("https://chatbot32-e6oa.onrender.com/login");
+    navigate("/login");
   };
 
   return (
