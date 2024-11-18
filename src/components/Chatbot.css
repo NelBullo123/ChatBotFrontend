@@ -2,31 +2,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
 
+/* Wrapper to center content */
 body {
   background: url('https://img.freepik.com/free-vector/white-technology-background-with-shapes_23-2148390677.jpg') no-repeat center center fixed;
-  background-size: cover; /* Ensure the background image covers the entire screen */
+  background-size: cover;
   margin: 0;
+  height: 100vh; /* Full height of viewport */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
+
+/* Chatbot styles */
 .chatbot {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   background-color: rgb(10, 64, 83);
   border-radius: 15px;
-  border: 3px solid black; /* Thick black border */
+  border: 3px solid black;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  height: 600px; /* Height of the chatbot container */
+  height: 600px;
   overflow: hidden;
   position: relative;
   background: url('https://img.freepik.com/free-vector/white-technology-background-with-shapes_23-2148390677.jpg') no-repeat center center fixed;
-  background-size: cover; /* Ensure the background image covers the entire container */
+  background-size: cover;
 }
-
-
 
 .chatbot-header {
   display: flex;
