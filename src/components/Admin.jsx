@@ -41,7 +41,7 @@ const Admin = () => {
 
     const handleSignOut = () => {
         // Redirect to the given URL on sign out
-        window.location.href = "https://chatbot32-e6oa.onrender.com//login";
+        window.location.href = "https://chatbot32-e6oa.onrender.com/";
     };
 
     if (loading) {

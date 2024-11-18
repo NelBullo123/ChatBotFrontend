@@ -141,7 +141,7 @@ const Chatbot = () => {
   };
 
   const logout = () => {
-    window.location.href = 'https://chatbot32-e6oa.onrender.com//login';
+    window.location.href = 'https://chatbot32-e6oa.onrender.com/';
   };
 
   const cancelLogout = () => {
