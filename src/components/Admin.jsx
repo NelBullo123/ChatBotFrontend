@@ -70,13 +70,51 @@ const Admin = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.email}</td>
-                            </tr>
-                        ))}
-                    </tbody>
+    {users.map((user) => (
+        <tr key={user.id}>
+            <td>{user.id}</td>
+            <td>{user.email}</td>
+            <td>
+                <button
+                    className={`${styles.disableButton} ${
+                        user.disabled ? styles.enabled : styles.disabled
+                    }`}
+                    onClick={async () => {
+                        try {
+                            const response = await fetch(
+                                `https://chatbotbackend-m8tb.onrender.com/admin/users/${user.id}/toggle_disable`,
+                                { method: "PUT" }
+                            );
+                            const result = await response.json();
+                            if (response.ok) {
+                                alert(
+                                    `User ${user.email} has been ${
+                                        result.disabled ? "disabled" : "enabled"
+                                    }.`
+                                );
+                                setUsers((prevUsers) =>
+                                    prevUsers.map((u) =>
+                                        u.id === user.id
+                                            ? { ...u, disabled: result.disabled }
+                                            : u
+                                    )
+                                );
+                            } else {
+                                alert(result.message);
+                            }
+                        } catch (error) {
+                            console.error("Error toggling user status:", error);
+                        }
+                    }}
+                >
+                    {user.disabled ? "Enable" : "Disable"}
+                </button>
+            </td>
+        </tr>
+    ))}
+</tbody>
+
+
                 </table>
             </div>
 

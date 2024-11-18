@@ -217,3 +217,32 @@ body {
     color: white;
     margin-bottom: 20px;
 }
+/* Disable Button */
+.disableButton {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.disableButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.disableButton:active {
+    transform: scale(0.95);
+}
+
+.disableButton.enabled {
+    background-color: #28a745; /* Green for "Enable" */
+}
+
+.disableButton.disabled {
+    background-color: #dc3545; /* Red for "Disable" */
+}
