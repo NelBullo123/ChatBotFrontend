@@ -1,100 +1,123 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Lora:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
-
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Background Styling */
-body {
-    background-image: url('https://e0.pxfuel.com/wallpapers/586/990/desktop-wallpaper-administrator-background-it-system-admin.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Container Styling */
-.container {
+/* General Styling Scoped to Admin Component */
+.wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     min-height: 100vh;
-    padding: 40px;
-    background-color: rgba(36, 36, 36, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    margin: 20px auto;
-    max-width: 1300px;
-}
-
-/* Title Styling */
-.title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 20px;
-    font-family: 'Lora', serif;
-}
-
-/* Table Container */
-.tableContainer {
-    max-width: 1200px;
-    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+    background-color: #000814; /* Dark black background */
+    color: #e1e1e1; /* Light text for contrast */
     padding: 20px;
-    background-color: #2C2451;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    overflow-x: auto; /* Enable horizontal scrolling */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Table */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #003566; /* Deep blue */
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.signOut {
+    background-color: #d00000; /* Bright red */
+    color: white;
+}
+
+.signOut:hover {
+    background-color: #a00000; /* Darker red */
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.userSection {
+    margin-top: 20px;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    color: #00b4d8; /* Light blue accent */
+    margin-bottom: 15px;
+}
+
+.userCount {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #bbbbbb;
+}
+
+.tableContainer {
+    margin-top: 20px;
+    background-color: #001d3d; /* Darker blue for the table container */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    overflow-x: auto; /* Enable horizontal scrolling on mobile */
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0;
-    background-color: #2C2451;
+    text-align: left;
     color: white;
-    font-family: 'Roboto', sans-serif;
 }
 
 .table th,
 .table td {
-    padding: 12px 20px;
-    text-align: left;
-    border: none;
-    font-size: 1rem;
+    padding: 12px 16px;
+    border-bottom: 1px solid #003566;
 }
 
 .table th {
-    background-color: #3D2E70;
-    font-weight: 600;
-    font-size: 1.1rem;
+    background-color: #003566; /* Same blue as the header */
+    color: white;
     text-transform: uppercase;
-    border-bottom: 2px solid #45386A;
+    font-size: 0.9rem;
 }
 
 .table tr:nth-child(odd) {
-    background-color: #3D2E70;
+    background-color: #001d3d;
 }
 
 .table tr:nth-child(even) {
-    background-color: #2C2451;
+    background-color: #002855;
 }
 
 .table tr:hover {
-    background-color: #4B3B91;
+    background-color: #00b4d8; /* Highlight in light blue */
     cursor: pointer;
 }
 
-.table td {
-    border-bottom: 1px solid #45386A;
+.footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    color: #bbbbbb;
+    padding: 10px 0;
+    border-top: 1px solid #003566;
 }
 
-/* Loading and Error */
+/* Loading and Error Messages */
 .loading,
 .error {
     text-align: center;
@@ -103,146 +126,94 @@ body {
 }
 
 .loading {
-    color: #ff9900;
+    color: #00b4d8; /* Accent color */
 }
 
 .error {
-    color: #ff6347;
-}
-
-/* Footer Styles */
-.footer {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #cccccc;
-    margin-top: 30px;
-    padding: 15px;
-    background-color: rgba(44, 36, 81, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Sign Out Button */
-.signOutButton {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    background-color: #3d1111;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.signOutButton:hover {
-    background-color: #342222;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-}
-
-.signOutButton:active {
-    transform: scale(0.95);
+    color: #d00000; /* Red for errors */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-        margin: 10px;
+    .wrapper {
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
     }
 
     .title {
-        font-size: 2rem;
-        margin-bottom: 15px;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .button {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .sectionTitle {
+        font-size: 1.3rem;
+    }
+
+    .userCount {
+        font-size: 1rem;
     }
 
     .tableContainer {
+        margin-top: 15px;
         padding: 10px;
     }
 
     .table th,
     .table td {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-
-    .signOutButton {
-        top: 10px;
-        left: 10px;
-        padding: 10px 15px;
-        font-size: 0.9rem;
+        padding: 10px;
+        font-size: 0.85rem;
     }
 
     .footer {
-        font-size: 1rem;
-        padding: 10px;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 15px;
-        margin: 5px;
+    .header {
+        flex-direction: column;
+        padding: 8px;
     }
 
     .title {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
+    }
+
+    .button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .sectionTitle {
+        font-size: 1.2rem;
+    }
+
+    .userCount {
+        font-size: 0.9rem;
     }
 
     .table th,
     .table td {
-        padding: 6px 8px;
-        font-size: 0.8rem;
-    }
-
-    .signOutButton {
-        top: 8px;
-        left: 8px;
-        padding: 8px 12px;
+        padding: 8px;
         font-size: 0.8rem;
     }
 
     .footer {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
     }
-}
-.userCount {
-    text-align: center;
-    font-size: 1.2rem;
-    color: white;
-    margin-bottom: 20px;
-}
-/* Disable Button */
-.disableButton {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.disableButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-}
-
-.disableButton:active {
-    transform: scale(0.95);
-}
-
-.disableButton.enabled {
-    background-color: #28a745; /* Green for "Enable" */
-}
-
-.disableButton.disabled {
-    background-color: #dc3545; /* Red for "Disable" */
 }

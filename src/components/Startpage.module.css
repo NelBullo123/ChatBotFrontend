@@ -1,0 +1,185 @@
+/* Import Bokor font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bokor&display=swap');
+
+/* Background Wrapper */
+.wrapper {
+  position: fixed; /* Fixed to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://img.freepik.com/premium-vector/digital-chatbot-virtual-assistant-artificial-intelligence-chat-concept-with-chat-bubble_618588-1139.jpg?semt=ais_hybrid');
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Make sure it's behind the content */
+}
+
+/* General Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://img.freepik.com/premium-vector/digital-chatbot-virtual-assistant-artificial-intelligence-chat-concept-with-chat-bubble_618588-1139.jpg?semt=ais_hybrid'); /* Background Image for Main Container */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 20px; /* Added padding for mobile view */
+}
+
+/* Content Styling */
+.content {
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid white; /* White border around content */
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  width: 100%; /* Ensure it takes full width on smaller screens */
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #00aaff, #ff66cc); /* Gradient color for title */
+  -webkit-background-clip: text; /* Webkit-specific for Safari and Chrome */
+  background-clip: text; /* Standard property */
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Bokor', cursive; /* Chatbot theme font */
+  word-wrap: break-word; /* Prevent overflow of title */
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #cce7ff;
+  line-height: 1.6; /* Improved readability */
+}
+
+.startButton {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #007acc;
+  border: 2px solid white; /* White border added */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.startButton:hover {
+  background-color: #005f99;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.startButton:active {
+  transform: scale(0.95);
+}
+
+.manual {
+  margin-top: 30px;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  color: #cce7ff;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.manual h2 {
+  font-size: 1.8rem;
+  color: #00aaff;
+  margin-bottom: 15px;
+  font-family: 'Bokor', cursive;
+}
+
+.manual ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.manual ul li {
+  margin-bottom: 10px;
+}
+
+.manual strong {
+  color: #00aaff;
+}
+
+/* Responsive Design */
+
+/* Tablet and Larger Mobile Screens */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .startButton {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .manual {
+    padding: 15px;
+  }
+}
+
+/* Mobile Screens (Phone) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px; /* Less padding on small screens */
+  }
+
+  .content {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .startButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .manual {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .manual h2 {
+    font-size: 1.5rem;
+  }
+
+  .manual ul {
+    margin-left: 10px;
+  }
+
+  .manual ul li {
+    font-size: 0.9rem;
+  }
+}

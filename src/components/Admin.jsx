@@ -11,7 +11,7 @@ const Admin = () => {
         const fetchUsers = async () => {
             try {
                 const response = await fetch(
-                    "https://chatbotbackend-m8tb.onrender.com/admin/users",
+                    "http://127.0.0.1:5000/admin/users",
                     {
                         method: "GET",
                         headers: {
@@ -41,7 +41,7 @@ const Admin = () => {
 
     const handleSignOut = () => {
         // Redirect to the given URL on sign out
-        window.location.href = "https://chatbot32-e6oa.onrender.com/";
+        window.location.href = "https://chatbot32-e6oa.onrender.com/login";
     };
 
     if (loading) {
@@ -53,42 +53,48 @@ const Admin = () => {
     }
 
     return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>List of Registered Users</h1>
+        <div className={styles.wrapper}>
+            <header className={styles.header}>
+                <h1 className={styles.title}>Admin Panel</h1>
+                <button
+                    className={`${styles.button} ${styles.signOut}`}
+                    onClick={handleSignOut}
+                >
+                    Sign Out
+                </button>
+            </header>
 
-            {/* Display total users count */}
-            <div className={styles.userCount}>
-                <h3>Total Users: {users.length}</h3>
-            </div>
+            <main className={styles.content}>
+                <section className={styles.userSection}>
+                    <h2 className={styles.sectionTitle}>Registered Users</h2>
+                    <p className={styles.userCount}>
+                        Total Users: <strong>{users.length}</strong>
+                    </p>
 
-            <div className={styles.tableContainer}>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.email}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                    <div className={styles.tableContainer}>
+                        <table className={styles.table}>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map((user) => (
+                                    <tr key={user.id}>
+                                        <td>{user.id}</td>
+                                        <td>{user.email}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
 
-            {/* Footer */}
             <footer className={styles.footer}>
-                Only admin can access this site
+                <p>Admin-only access. Please handle with care.</p>
             </footer>
-
-            {/* Sign Out Button */}
-            <button className={styles.signOutButton} onClick={handleSignOut}>
-                Sign Out
-            </button>
         </div>
     );
 };

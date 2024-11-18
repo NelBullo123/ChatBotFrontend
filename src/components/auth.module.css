@@ -6,30 +6,30 @@
     background: url('https://img.freepik.com/premium-vector/digital-chatbot-virtual-assistant-artificial-intelligence-chat-concept-with-chat-bubble_618588-1139.jpg?semt=ais_hybrid') no-repeat center center fixed;
     background-size: cover;
     position: relative;
-    padding: 20px; /* Added padding to make the container responsive */
-    box-sizing: border-box; /* Ensures padding doesn't affect overall layout */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .form {
-    background-color: rgba(44, 62, 80, 0.8); /* Slight transparency for better contrast */
+    background-color: rgba(44, 62, 80, 0.8);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 350px;
+    max-width: 400px; /* Increase width for larger screens */
     color: #ffffff;
     position: relative;
     text-align: center;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    box-sizing: border-box;
 }
 
 .logo {
-    display: block;        /* Ensures the logo is a block element */
-    margin: 0 auto 1.5rem; /* Centers the logo and adds space below it */
-    width: 150px;          /* Makes the logo larger (you can adjust this value) */
-    height: auto;          /* Maintains the aspect ratio */
+    display: block;
+    margin: 0 auto 1.5rem;
+    width: 150px;
+    height: auto;
 }
 
 .input {
@@ -42,7 +42,7 @@
     color: #ffffff;
     transition: background 0.3s ease;
     width: 100%;
-    box-sizing: border-box; /* Ensures inputs use the full available width */
+    box-sizing: border-box;
 }
 
 .input:focus {
@@ -59,8 +59,8 @@
     color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 100%; /* Make the button take full width */
-    box-sizing: border-box; /* Ensure it fills the form's width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .button:disabled {
@@ -85,7 +85,7 @@
 }
 
 .toggleText {
-    color: #ADD8E6; /* Light blue color */
+    color: #ADD8E6;
     margin-top: 1rem;
     text-align: center;
     cursor: pointer;
@@ -97,20 +97,60 @@
 }
 
 /* Responsive Design */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduce padding for tablet screens */
+    }
+
     .form {
-        max-width: 90%; /* Make the form more fluid on smaller screens */
+        padding: 1.5rem;
+        max-width: 90%; /* Ensure the form fits better on smaller screens */
     }
 
     .logo {
-        width: 120px; /* Resize logo for mobile */
+        width: 130px; /* Adjust logo size for smaller screens */
     }
 
     .input {
-        font-size: 0.9rem; /* Smaller input text for better fit */
+        font-size: 0.9rem; /* Adjust font size for better readability */
+        padding: 0.8rem; /* Less padding for smaller inputs */
     }
 
     .button {
-        font-size: 1rem; /* Adjust button font size for mobile */
+        font-size: 1rem; /* Adjust button font size for better fit */
+        padding: 0.8rem; /* Less padding for smaller buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px; /* Reduce padding further for mobile screens */
+    }
+
+    .form {
+        padding: 1.2rem;
+        max-width: 95%; /* Form takes up almost full width on mobile */
+    }
+
+    .logo {
+        width: 100px; /* Resize logo even smaller for mobile */
+    }
+
+    .input {
+        font-size: 0.8rem; /* Smaller input text for mobile */
+        padding: 0.7rem; /* Smaller input padding for better fit */
+    }
+
+    .button {
+        font-size: 0.9rem; /* Adjust button font size for mobile */
+        padding: 0.7rem; /* Smaller padding for mobile buttons */
+    }
+
+    .errorMessage {
+        font-size: 0.8rem; /* Smaller error message text */
+    }
+
+    .toggleText {
+        font-size: 0.8rem; /* Adjust toggle text font size */
     }
 }
