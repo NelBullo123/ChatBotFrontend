@@ -39,9 +39,35 @@ const Admin = () => {
         fetchUsers();
     }, []);
 
+    const toggleUserStatus = async (userId, disable) => {
+        try {
+            const response = await fetch("https://chatbotbackend-m8tb.onrender.com/admin/disable_user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ user_id: userId, disable }),
+            });
+
+            if (response.ok) {
+                const updatedUsers = users.map((user) =>
+                    user.id === userId ? { ...user, disabled: !!disable } : user
+                );
+                setUsers(updatedUsers);
+            } else {
+                const errorData = await response.json();
+                alert(errorData.message || "Failed to update user status.");
+            }
+        } catch (err) {
+            console.error("Error toggling user status:", err);
+            alert("An error occurred while updating user status.");
+        }
+    };
+
     const handleSignOut = () => {
-        // Redirect to the given URL on sign out
-        window.location.href = "https://chatbot32-e6oa.onrender.com/";
+        // Clear any necessary data (e.g., token) and redirect to the login page
+        console.log("User signed out."); // Optional: Add your custom logic for sign-out
+        window.location.href = "https://chatbot32-e6oa.onrender.com/"; // Redirect to the login page
     };
 
     if (loading) {
@@ -77,13 +103,26 @@ const Admin = () => {
                                 <tr>
                                     <th>ID</th>
                                     <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {users.map((user) => (
-                                    <tr key={user.id}>
+                                    <tr key={user.id} className={user.disabled ? styles.disabledRow : ""}>
                                         <td>{user.id}</td>
                                         <td>{user.email}</td>
+                                        <td>{user.disabled ? "Disabled" : "Active"}</td>
+                                        <td>
+                                            <button
+                                                className={styles.button}
+                                                onClick={() =>
+                                                    toggleUserStatus(user.id, user.disabled ? 0 : 1)
+                                                }
+                                            >
+                                                {user.disabled ? "Enable" : "Disable"}
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

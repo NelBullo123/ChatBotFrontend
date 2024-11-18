@@ -217,3 +217,23 @@
         font-size: 0.7rem;
     }
 }
+/* Disabled Button */
+.disabledButton {
+    background-color: #bbbbbb; /* Gray */
+    color: #666666; /* Dimmed text */
+    cursor: not-allowed;
+    pointer-events: none; /* Prevent interaction */
+}
+
+/* Highlight Disabled Row */
+.table tr.disabledRow {
+    background-color: rgba(255, 0, 0, 0.1); /* Light red background */
+    color: #d00000; /* Red text */
+    opacity: 0.7; /* Dim overall appearance */
+}
+
+/* Optional: Make the row still highlight on hover */
+.table tr.disabledRow:hover {
+    background-color: rgba(255, 0, 0, 0.15); /* Slightly darker red */
+    cursor: default;
+}
