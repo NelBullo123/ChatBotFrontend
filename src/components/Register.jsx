@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css'; // Assuming you have a CSS file for styling
 import chatbotLogo from './assets/chatbotlogo.png'; // Replace with your logo
 
-
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,10 +11,8 @@ function Register() {
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();  // Initialize useNavigate
 
-
     const handleRegister = async (e) => {
         e.preventDefault();
-
 
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         if (!emailRegex.test(email)) {
@@ -23,22 +20,18 @@ function Register() {
             return;
         }
 
-
         if (password.length < 6) {
             setErrorMessage('Password must be at least 6 characters');
             return;
         }
-
 
         if (password !== confirmPassword) {
             setErrorMessage('Passwords do not match');
             return;
         }
 
-
         setLoading(true);
         setErrorMessage('');
-
 
         try {
             const response = await fetch('https://chatbotbackend-m8tb.onrender.com/register', {
@@ -49,8 +42,7 @@ function Register() {
                 body: JSON.stringify({ email, password }),
                 mode: 'cors'  // Explicitly setting mode to 'cors'
             });
-           
-
+            
 
             if (response.ok) {
                 alert('Registration successful');
@@ -68,7 +60,6 @@ function Register() {
             setLoading(false);
         }
     };
-
 
     return (
         <div className={styles.container}>
@@ -110,6 +101,5 @@ function Register() {
         </div>
     );
 }
-
 
 export default Register;
